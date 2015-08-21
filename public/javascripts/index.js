@@ -58,29 +58,33 @@ var HotkeyTable = React.createClass({
 
 });
 
-var Header = React.createClass({
+var Navigation = React.createClass({
     getInitialState: function() {
         return {
             navItems: [
                 "Home",
                 "About",
                 "Contact"
-            ]
+            ],
+            nav: []
         };
     },
+    componentWillMount: function() {
+        this.setState({nav: this.state.navItems});
+    },
     render: function(){
-        console.log(this.props.navItems);
+        console.log(this.state.nav);
         return (
             <header>
-            <nav>
-            <ul>{
-                this.props.navItems.map(function(item){
-                    return (
-                        <li key={item}><a href="#" alt={item}>{item}</a></li>
-                    );
-                })}
-            </ul>
-            </nav>
+                <nav>
+                    <ul>{
+                        this.state.nav.map(function(item){
+                            return (
+                                <li key={item}><a href="#" alt={item}>{item}</a></li>
+                            );
+                        })}
+                    </ul>
+                </nav>
             </header>
         );
     }
@@ -88,11 +92,11 @@ var Header = React.createClass({
 
 //Rendering the Dom
 React.render(
-    <Header />,
-    document.getElementById('wrapper')
+    <Navigation />,
+    document.getElementById('side-nav')
 );
 
 React.render(
     <Program programName="Atom" programDescription="lorem ipsum"/>,
-    document.getElementById('wrapper')
+    document.getElementById('main')
 );
