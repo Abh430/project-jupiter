@@ -3,24 +3,15 @@
 var Program = React.createClass({
     getInitialState: function(){
         return {
-            commands: [
-                {"name" : "hadouken", "command" : "Up + up + down + Z"},
-                {"name" : "punch", "command" : "X"},
-                {"name" : "Uppercut", "command" : "Down + back + Y"}
-            ],
-            hotkeys: []
+            commands: []
         };
-    },
-    componentWillMount: function(){
-        this.setState({hotkeys: this.state.commands});
-
     },
     render: function(){
         return (
             <div className="program-container">
                 <h2>{this.props.programName}</h2>
                 <p>{this.props.programDescription}</p>
-                <HotkeyTable hotkeys={this.state.hotkeys} />
+                <HotkeyTable hotkeys={this.props.programCommands} />
             </div>
         );
     }
@@ -28,6 +19,7 @@ var Program = React.createClass({
 
 var HotkeyTable = React.createClass({
     render: function() {
+        console.log(this.props.hotkeys);
         return (
             <div className="hotkey-table">
             <table>
@@ -61,31 +53,101 @@ var HotkeyTable = React.createClass({
 var Navigation = React.createClass({
     getInitialState: function() {
         return {
-            navItems: [
+            pages: [
                 "Home",
                 "About",
                 "Contact"
             ],
-            nav: []
+            apps: [
+                {
+                    name: "Atom",
+                    description: "lorem ipsum",
+                    commands: [
+                        {"name" : "hadouken", "command" : "Up + up + down + Z"},
+                        {"name" : "punch", "command" : "X"},
+                        {"name" : "Uppercut", "command" : "Down + back + Y"}
+                    ]
+                },
+                {
+                    name: "Zsh",
+                    description: "This is Zsh!",
+                    commands: [
+                        {"name" : "hadouken", "command" : "Up + up + down + Z"},
+                        {"name" : "punch", "command" : "X"},
+                    ]
+                },
+                {
+                    name: "MySQL",
+                    description: "joins and tables and cells",
+                    commands: [
+                        {"name" : "Uppercut", "command" : "Down + back + Y"}
+                    ]
+                }
+            ],
+            active: []
         };
     },
     componentWillMount: function() {
-        this.setState({nav: this.state.navItems});
+        this.setState({nav: this.state.pages});
+    },
+    setActiveApp: function() {
+
     },
     render: function(){
-        console.log(this.state.nav);
         return (
-            <header>
-                <nav>
-                    <ul>{
-                        this.state.nav.map(function(item){
-                            return (
-                                <li key={item}><a href="#" alt={item}>{item}</a></li>
-                            );
-                        })}
-                    </ul>
-                </nav>
-            </header>
+                    <div>
+                        <h3>Apps</h3>
+                        <ul>
+                            {
+                                this.state.apps.map(function(item){
+                                    return (
+                                        <li key={item.name}><a href="#">{item.name}</a></li>
+                                    );
+                                })
+                            }
+                        </ul>
+
+
+                        <h3>Active</h3>
+                        <ul>
+                            {
+                                this.state.active.map(function(item){
+                                    return (
+                                        <li>{item.name}</li>
+                                    );
+                                })
+                            }
+                        </ul>
+
+
+                </div>
+
+        );
+    }
+});
+
+var Body = React.createClass({
+    getInitialState: function() {
+        return {
+            default:
+                {
+                    name: "Atom",
+                    description: "lorem ipsum",
+                    commands: [
+                        {"name" : "hadouken", "command" : "Up + up + down + Z"},
+                        {"name" : "punch", "command" : "X"},
+                        {"name" : "Uppercut", "command" : "Down + back + Y"}
+                    ]
+                },
+            application: {}
+        };
+    },
+    componentWillMount: function() {
+        this.setState({application: this.state.default});
+    },
+    render: function() {
+        return (
+            <Program programName={this.state.application.name} programDescription={this.state.application.description} programCommands={this.state.application.commands} />
         );
     }
 });
@@ -93,10 +155,10 @@ var Navigation = React.createClass({
 //Rendering the Dom
 React.render(
     <Navigation />,
-    document.getElementById('side-nav')
+    document.getElementById('apps-list')
 );
 
 React.render(
-    <Program programName="Atom" programDescription="lorem ipsum"/>,
+    <Body />,
     document.getElementById('main')
 );
