@@ -1,0 +1,9 @@
+{
+    "name": "ZSH",
+    "description": "lorem ipsum",
+    "commands": [
+        {"name" : "teleport", "command" : "Up + Down"},
+        {"name" : "punch", "command" : "X"},
+        {"name" : "Jump", "command" : "Up"}
+    ]
+}

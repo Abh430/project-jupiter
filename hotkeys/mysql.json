@@ -1,0 +1,9 @@
+{
+    "name": "MySQL",
+    "description": "lorem ipsum",
+    "commands": [
+        {"name" : "hadouken", "command" : "Up + up + down + Z"},
+        {"name" : "Low Kick", "command" : "Back + O"},
+        {"name" : "Uppercut", "command" : "Down + back + Y"}
+    ]
+}

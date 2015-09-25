@@ -1,0 +1,136 @@
+{
+    "name": "Atom",
+    "description": "lorem ipsum",
+    "commands": [{
+            "name": "General",
+            "commands": [{
+                "keys": "shift + ⌘ + p",
+                "command": "Toggle command palette"
+            }, {
+                "keys": "⌘ + /",
+                "command": "Toggle line/selection comment"
+            }, {
+                "keys": "ctrl + space",
+                "command": "Show available auto-completions"
+            }]
+        }, {
+            "name": "File Navigation",
+            "commands": [{
+                "keys": "⌘ + p",
+                "command": "Toggle file finder"
+            }, {
+                "keys": "ctrl + g",
+                "command": "Goto line"
+            }, {
+                "keys": "⌘ + r",
+                "command": "Goto symbol"
+            }, {
+                "keys": "shift + ⌘ + { / }",
+                "command": "Previous/next file"
+            }, {
+                "keys": "⌘ + F2",
+                "command": "Set bookmark"
+            }, {
+                "keys": "F2",
+                "command": "Goto next bookmark"
+            }]
+        }, {
+            "name": "View/Window Manipulation",
+            "commands": [{
+                "keys": "⌘ + \\",
+                "command": "Toggle tree-view sidebar"
+            }, {
+                "keys": "ctrl + ⌘ + f",
+                "command": "Toggle fullscreen"
+            }, {
+                "keys": "⌘ + k, left/right/up/down",
+                "command": "Split pane left/right/up/down"
+            }, {
+                "keys": "⌘ + k, ⌘ + left/right/up/down",
+                "command": "Focus pane left/right/up/down"
+            }]
+        }, {
+            "name": "Find",
+            "commands": [{
+                "keys": "⌘ + f",
+                "command": "Find in file"
+            }, {
+                "keys": "⌘ + g",
+                "command": "Find next"
+            }, {
+                "keys": "shift + ⌘ + f",
+                "command": "Find in project"
+            }, {
+                "keys": "⌘ + e",
+                "command": "Use selection for find"
+            }]
+        }, {
+            "name": "Folding",
+            "commands": [{
+                "keys": "ctrl + ⌘ + [ / ]",
+                "command": "Fold/unfold current code block"
+            }, {
+                "keys": "option + shift + ⌘ + [ / ]",
+                "command": "Fold/unfold all code blocks"
+            }, {
+                "keys": "⌘ + 1-9",
+                "command": "*Fold code blocks at depth 1-9 *"
+            }]
+        }, {
+            "name": "Word Manipulation",
+            "commands": [{
+                "keys": "ctrl + t",
+                "command": "Transpose characters either side of cursor"
+            }, {
+                "keys": "option + backspace",
+                "command": "Delete text to beginning of word"
+            }, {
+                "keys": "option + delete or fn + option + backspace",
+                "command": "Delete text to end of word"
+            }]
+        }, {
+            "name": "Line Manipulation",
+            "commands": [{
+                "keys": "⌘ + ] / [",
+                "command": "Indent/outdent current line"
+            }, {
+                "keys": "⌘ + enter",
+                "command": "Insert new line after current line"
+            }, {
+                "keys": "⌘ + shift + enter",
+                "command": "Insert new line before current line"
+            }, {
+                "keys": "ctrl + shift + k",
+                "command": "Delete current line"
+            }, {
+                "keys": "ctrl + ⌘ + up/down",
+                "command": "Move current line up/down"
+            }, {
+                "keys": "shift + ⌘ + d",
+                "command": "Duplicate current line"
+            }, {
+                "keys": "⌘ + j",
+                "command": "Join current and next lines"
+            }]
+        }, {
+            "name": "Selection",
+            "commands": [{
+                "keys": "⌘ + d",
+                "command": "Select current word/token"
+            }, {
+                "keys": "⌘ + l",
+                "command": "Select current line"
+            }, {
+                "keys": "option + shift + left/right",
+                "command": "Select to beginning/end of word"
+            }, {
+                "keys": "shift + ⌘ + left/right",
+                "command": "Select to first/last character of line"
+            }, {
+                "keys": "shift + ⌘ + up/down",
+                "command": "Select to top/bottom of document"
+            }]
+        }
+    ]
+
+}

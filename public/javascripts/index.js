@@ -6,22 +6,33 @@ var Program = React.createClass({
             commands: []
         };
     },
+    componentWillMount: function() {
+        console.log(this.props.programCommands);
+    },
     render: function(){
         return (
             <div className="program-container">
                 <h2>{this.props.programName}</h2>
                 <p>{this.props.programDescription}</p>
-                <HotkeyTable hotkeys={this.props.programCommands} />
+
+                {
+                    this.props.programCommands.map(function(item, key) {
+                        return (
+                            <HotkeyTable hotkeys={item} key={key} />
+                        );
+                    })
+                }
             </div>
         );
     }
 });
 
+
 var HotkeyTable = React.createClass({
     render: function() {
-        console.log(this.props.hotkeys);
         return (
             <div className="hotkey-table">
+            <h3>{this.props.hotkeys.name}</h3>
             <table>
                 <thead>
                     <td>
@@ -33,14 +44,14 @@ var HotkeyTable = React.createClass({
                 </thead>
                 <tbody>
                     {
-                    this.props.hotkeys.map(function(command, key){
-                        return (
-                            <tr key={key}>
-                                <td>{command.name}</td>
-                                <td>{command.command}</td>
-                            </tr>
-                        );
-                    })
+                        this.props.hotkeys.commands.map(function(item, key){
+                            return (
+                                <tr key={key}>
+                                    <td>{item.keys}</td>
+                                    <td>{item.command}</td>
+                                </tr>
+                            );
+                        })
                     }
                 </tbody>
             </table>
@@ -53,112 +64,168 @@ var HotkeyTable = React.createClass({
 var Navigation = React.createClass({
     getInitialState: function() {
         return {
-            pages: [
-                "Home",
-                "About",
-                "Contact"
-            ],
-            apps: [
-                {
-                    name: "Atom",
-                    description: "lorem ipsum",
-                    commands: [
-                        {"name" : "hadouken", "command" : "Up + up + down + Z"},
-                        {"name" : "punch", "command" : "X"},
-                        {"name" : "Uppercut", "command" : "Down + back + Y"}
-                    ]
-                },
-                {
-                    name: "Zsh",
-                    description: "This is Zsh!",
-                    commands: [
-                        {"name" : "hadouken", "command" : "Up + up + down + Z"},
-                        {"name" : "punch", "command" : "X"},
-                    ]
-                },
-                {
-                    name: "MySQL",
-                    description: "joins and tables and cells",
-                    commands: [
-                        {"name" : "Uppercut", "command" : "Down + back + Y"}
-                    ]
-                }
-            ],
-            active: []
+            apps: [],
+            active: {}
         };
     },
     componentWillMount: function() {
-        this.setState({nav: this.state.pages});
-    },
-    setActiveApp: function() {
 
     },
     render: function(){
         return (
-                    <div>
-                        <h3>Apps</h3>
-                        <ul>
-                            {
-                                this.state.apps.map(function(item){
-                                    return (
-                                        <li key={item.name}><a href="#">{item.name}</a></li>
-                                    );
-                                })
-                            }
-                        </ul>
+            <header id="side-nav">
+                <nav>
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+
+                    <div id="apps-list">
+                    <h3>Apps</h3>
+                    <ul>
+                        {
+                            this.props.apps.map(function(item, key){
+                                return (
+                                    <li key={key}><a href="#" onClick={this.props.onClick.bind(null, this, item)}>{item}</a></li>
+                                );
+                            }, this)
+                        }
+                    </ul>
 
 
-                        <h3>Active</h3>
-                        <ul>
-                            {
-                                this.state.active.map(function(item){
-                                    return (
-                                        <li>{item.name}</li>
-                                    );
-                                })
-                            }
-                        </ul>
+                    <h3>Active</h3>
+                    <ul>
 
-
-                </div>
+                        {
+                            this.props.active.map(function(item){
+                                return (
+                                    <li>{item}</li>
+                                );
+                            })
+                        }
+                    </ul>
+                    </div>
+                </nav>
+            </header>
 
         );
     }
 });
 
-var Body = React.createClass({
+var App = React.createClass({
     getInitialState: function() {
         return {
-            default:
-                {
-                    name: "Atom",
-                    description: "lorem ipsum",
-                    commands: [
-                        {"name" : "hadouken", "command" : "Up + up + down + Z"},
-                        {"name" : "punch", "command" : "X"},
-                        {"name" : "Uppercut", "command" : "Down + back + Y"}
-                    ]
-                },
-            application: {}
+            applications: [{
+                "name" : "Pick an App",
+                "description" : "",
+                "commands" : [{
+                    "name": "",
+                    "commands": [{
+                        "keys": "",
+                        "command": ""}]
+                }]
+            }],
+            active: [
+
+            ],
+            url: {
+
+            },
+            apps: []
         };
     },
+    clickHandle: function(e, obj) {
+
+        var found = false;
+
+        for(var i = 0; i < this.state.applications.length; i++) {
+            if (this.state.applications[i].name.toLowerCase() === obj.toLowerCase()) {
+                found = true;
+                break;
+            }
+        }
+        // console.log(this.state.applications);
+        if (found === false) {
+            $.ajax({
+                url: '/hotkeys?app=' + obj,
+                dataType: 'json',
+                cache: false,
+                success: function(data) {
+                    var tmpActive = [];
+                    tmpActive = this.state.active;
+                    tmpActive.push(data.name);
+
+                    var tmpApps = [];
+                    tmpApps = this.state.applications;
+                    tmpApps.push(data);
+                    this.setState({applications: tmpApps,
+                                    active: tmpActive});
+                }.bind(this),
+                error: function(xhr, status, err) {
+                    console.error(this.props.url, status, err.toString());
+                }.bind(this)
+            });
+
+        }
+    },
+    getAppsList: function() {
+        $.ajax({
+            url: "/apps",
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+                this.setState({apps: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
+    // getDefaultApp: function() {
+    //     $.ajax({
+    //         url: "/hotkeys?app=" + this.state.apps[0],
+    //         dataType: 'json',
+    //         cache: false,
+    //         success: function(data) {
+    //             this.setState({application: data});
+    //             console.log(data);
+    //         }.bind(this),
+    //         error: function(xhr, status, err) {
+    //             console.error(this.props.url, status, err.toString());
+    //         }.bind(this)
+    //     });
+    // },
     componentWillMount: function() {
-        this.setState({application: this.state.default});
+        this.getAppsList();
+        // this.getDefaultApp();
+
+    },
+    componentDidMount: function() {
+
     },
     render: function() {
         return (
-            <Program programName={this.state.application.name} programDescription={this.state.application.description} programCommands={this.state.application.commands} />
+            <div>
+                <Navigation onClick={this.clickHandle} apps={this.state.apps} active={this.state.active} />
+                {
+                    this.state.applications.map(function(item, key) {
+                        console.log(item.commands);
+                        return(
+                            <Program programName={item.name} programDescription={item.description} programCommands={item.commands} key={key} />
+                        );
+                    })
+                }
+
+            </div>
         );
     }
 });
 
 //Rendering the Dom
-React.render(
-    <Navigation />,
-    document.getElementById('apps-list')
-);
 
 React.render(
-    <Body />,
+    <App />,
     document.getElementById('main')
 );
