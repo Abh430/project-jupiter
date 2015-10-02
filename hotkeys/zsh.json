@@ -1,9 +1,434 @@
 {
-    "name": "ZSH",
+    "name": "Zsh",
     "description": "lorem ipsum",
-    "commands": [
-        {"name" : "teleport", "command" : "Up + Down"},
-        {"name" : "punch", "command" : "X"},
-        {"name" : "Jump", "command" : "Up"}
-    ]
+    "commands": [{
+        "name": "General",
+        "commands": [{
+            "keys": "tab",
+            "command": "Create a new tab in the current directory (OS X - req enabling access for assistive devices under sys prefs)."
+        }, {
+            "keys": "take",
+            "command": "Create a new directory and change to it, will create intermediate directories as required."
+        }, {
+            "keys": "x / extract",
+            "command": "Extract an archive (supported types: tar.{bz2,gz,xz,lzma}, bz2, rar, gz, tar, tbz2, tgz, zip, Z, 7z)."
+        }, {
+            "keys": "zsh_stats",
+            "command": "Get a list of the top 20 commands and how many times they have been run."
+        }, {
+            "keys": "uninstall_oh_my_zsh",
+            "command": "Uninstall Oh-my-zsh."
+        }, {
+            "keys": "upgrade_oh_my_zsh",
+            "command": "Upgrade Oh-my-zsh."
+        }]
+    }, {
+        "name": "Aliases",
+        "commands": [{
+            "keys": "alias",
+            "command": "list all aliases"
+        }, {
+            "keys": "..",
+            "command": "Toggle file finder"
+        }, {
+            "keys": "....",
+            "command": "Goto line"
+        }, {
+            "keys": "......",
+            "command": "Goto symbol"
+        }, {
+            "keys": "........",
+            "command": "Previous/next file"
+        }, {
+            "keys": "/",
+            "command": "Set bookmark"
+        }, {
+            "keys": "md",
+            "command": "mkdir -p"
+        }, {
+            "keys": "rd",
+            "command": "rmdir"
+        }, {
+            "keys": "d",
+            "command": "dirs -v (lists last used directories)"
+        }]
+    }, {
+        "name": "",
+        "commands": [
+            {
+                "keys": "g",
+                "command": "git"
+            },
+            {
+                "keys": "ga",
+                "command": "git add"
+            },
+            {
+                "keys": "gaa",
+                "command": "git add --all"
+            },
+            {
+                "keys": "gapa",
+                "command": "git add --patch"
+            },
+            {
+                "keys": "gb",
+                "command": "git branch"
+            },
+            {
+                "keys": "gba",
+                "command": "git branch -a"
+            },
+            {
+                "keys": "gbr",
+                "command": "git branch --remote"
+            },
+            {
+                "keys": "gc",
+                "command": "git commit -v"
+            },
+            {
+                "keys": "gc!",
+                "command": "git commit -v --amend"
+            },
+            {
+                "keys": "gca",
+                "command": "git commit -v -a"
+            },
+            {
+                "keys": "gca!",
+                "command": "git commit -v -a --amend"
+            },
+            {
+                "keys": "gcl",
+                "command": "git config --list"
+            },
+            {
+                "keys": "gclean",
+                "command": "git reset --hard && git clean -dfx"
+            },
+            {
+                "keys": "gcm",
+                "command": "git checkout master"
+            },
+            {
+                "keys": "gcmsg",
+                "command": "git commit -m"
+            },
+            {
+                "keys": "gco",
+                "command": "git checkout"
+            },
+            {
+                "keys": "gcount",
+                "command": "git shortlog -sn"
+            },
+            {
+                "keys": "gcp",
+                "command": "git cherry-pick"
+            },
+            {
+                "keys": "gcs",
+                "command": "git commit -S"
+            },
+            {
+                "keys": "gd",
+                "command": "git diff"
+            },
+            {
+                "keys": "gdca",
+                "command": "git diff --cached"
+            },
+            {
+                "keys": "gdt",
+                "command": "git diff-tree --no-commit-id --name-only -r"
+            },
+            {
+                "keys": "gdt",
+                "command": "git difftool"
+            },
+            {
+                "keys": "gg",
+                "command": "git gui citool"
+            },
+            {
+                "keys": "gga",
+                "command": "git gui citool --amend"
+            },
+            {
+                "keys": "ggpnp",
+                "command": "git pull origin $(current_branch) && git push origin $(current_branch)"
+            },
+            {
+                "keys": "ggpull",
+                "command": "git pull origin $(current_branch)"
+            },
+            {
+                "keys": "ggl",
+                "command": "git pull origin $(current_branch)"
+            },
+            {
+                "keys": "ggpur",
+                "command": "git pull --rebase origin $(current_branch)"
+            },
+            {
+                "keys": "ggpush",
+                "command": "git push origin $(current_branch)"
+            },
+            {
+                "keys": "ggp",
+                "command": "git push origin $(current_branch)"
+            },
+            {
+                "keys": "ggsup",
+                "command": "git branch --set-upstream-to=origin/$(current_branch)"
+            },
+            {
+                "keys": "gignore",
+                "command": "git update-index --assume-unchanged"
+            },
+            {
+                "keys": "gignored",
+                "command": "git ls-files -v"
+            },
+            {
+                "keys": "git-svn-dcommit-push",
+                "command": "git svn dcommit && git push github master:svntrunk"
+            },
+            {
+                "keys": "gk",
+                "command": "gitk --all --branches"
+            },
+            {
+                "keys": "gl",
+                "command": "git pull"
+            },
+            {
+                "keys": "glg",
+                "command": "git log --stat --max-count = 10"
+            },
+            {
+                "keys": "glgg",
+                "command": "git log --graph --max-count = 10"
+            },
+            {
+                "keys": "glgga",
+                "command": "git log --graph --decorate --all"
+            },
+            {
+                "keys": "glo",
+                "command": "git log --oneline --decorate --color"
+            },
+            {
+                "keys": "glog",
+                "command": "git log --oneline --decorate --color --graph"
+            },
+            {
+                "keys": "glp",
+                "command": "_git_log_prettily (git log --pretty=$1)"
+            },
+            {
+                "keys": "gm",
+                "command": "git merge"
+            },
+            {
+                "keys": "gmt",
+                "command": "git mergetool --no-prompt"
+            },
+            {
+                "keys": "gp",
+                "command": "git push"
+            },
+            {
+                "keys": "gpoat",
+                "command": "git push origin --all && git push origin --tags"
+            },
+            {
+                "keys": "gr",
+                "command": "git remote"
+            },
+            {
+                "keys": "grba",
+                "command": "git rebase --abort"
+            },
+            {
+                "keys": "grbc",
+                "command": "git rebase --continue"
+            },
+            {
+                "keys": "grbi",
+                "command": "git rebase -i"
+            },
+            {
+                "keys": "grh",
+                "command": "git reset HEAD"
+            },
+            {
+                "keys": "grhh",
+                "command": "git reset HEAD --hard"
+            },
+            {
+                "keys": "grmv",
+                "command": "git remote rename"
+            },
+            {
+                "keys": "grrm",
+                "command": "git remote remove"
+            },
+            {
+                "keys": "grset",
+                "command": "git remote set-url"
+            },
+            {
+                "keys": "grt",
+                "command": "cd $(git rev-parse --show-toplevel"
+            },
+            {
+                "keys": "grup",
+                "command": "git remote update"
+            },
+            {
+                "keys": "grv",
+                "command": "git remote -v"
+            },
+            {
+                "keys": "gsd",
+                "command": "git svn dcommit"
+            },
+            {
+                "keys": "gsps",
+                "command": "git show --pretty = short --show-signature"
+            },
+            {
+                "keys": "gsr",
+                "command": "git svn rebase"
+            },
+            {
+                "keys": "gss",
+                "command": "git status -s"
+            },
+            {
+                "keys": "gst",
+                "command": "git status"
+            },
+            {
+                "keys": "gsta",
+                "command": "git stash"
+            },
+            {
+                "keys": "gstd",
+                "command": "git stash drop"
+            },
+            {
+                "keys": "gstp",
+                "command": "git stash pop"
+            },
+            {
+                "keys": "gsts",
+                "command": "git stash show --text"
+            },
+            {
+                "keys": "gts",
+                "command": "git tag -s"
+            },
+            {
+                "keys": "gunignore",
+                "command": "git update-index --no-assume-unchanged"
+            },
+            {
+                "keys": "gunwip",
+                "command": "git log -n 1"
+            },
+            {
+                "keys": "gup",
+                "command": "git pull --rebase"
+            },
+            {
+                "keys": "gvt",
+                "command": "git verify-tag"
+            },
+            {
+                "keys": "gwc",
+                "command": "git whatchanged -p --abbrev-commit --pretty = medium"
+            },
+            {
+                "keys": "gwip",
+                "command": "git add -A; git ls-files --deleted -z"
+            }
+        ]
+    }, {
+        "name": "Editors",
+        "commands": [{
+            "keys": "stt",
+            "command": "(When using sublime plugin) Open current directory in Sublime Text 2/3"
+        }, {
+            "keys": "v",
+            "command": "(When using vi-mode plugin) Edit current command line in Vim"
+        }]
+    }, {
+        "name": "Symfony2",
+        "commands": [
+            {
+                "keys": "sf",
+                "command": "php ./app/console"
+            },
+            {
+                "keys": "sfcl",
+                "command": "php app/console cache:clear"
+            },
+            {
+                "keys": "_sfcontainer",
+                "command": "sf container:debug"
+            },
+            {
+                "keys": "sfcw",
+                "command": "sf cache:warmup"
+            },
+            {
+                "keys": "sfgb",
+                "command": "sf generate:bundle"
+            },
+            {
+                "keys": "sfroute",
+                "command": "sf router:debug"
+            },
+            {
+                "keys": "_sfsr",
+                "command": "sf server:run -vvv"
+            }
+        ]
+    }, {
+        "name": "systemctl",
+        "commands": [
+            {
+                "keys": "sc-status NAME",
+                "command": "show the status of the NAME process"
+            },
+            {
+                "keys": "sc-show NAME",
+                "command": "show the NAME systemd .service file"
+            },
+            {
+                "keys": "sc-start NAME",
+                "command": "start the NAME process"
+            },
+            {
+                "keys": "sc-stop NAME",
+                "command": "stop the NAME process"
+            },
+            {
+                "keys": "sc-restart NAME",
+                "command": "restart the NAME process"
+            },
+            {
+                "keys": "sc-enable NAME",
+                "command": "enable the NAME process to start at boot"
+            },
+            {
+                "keys": "sc-disable NAME",
+                "command": "disable the NAME process at boot"
+            }
+        ]
+    }]
+
 }

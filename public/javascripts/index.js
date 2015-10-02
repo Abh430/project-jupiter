@@ -1,14 +1,6 @@
 /** @jsx React.DOM */
 //React Components
 var Program = React.createClass({
-    getInitialState: function(){
-        return {
-            commands: []
-        };
-    },
-    componentWillMount: function() {
-        console.log(this.props.programCommands);
-    },
     render: function(){
         return (
             <div className="program-container">
@@ -62,15 +54,6 @@ var HotkeyTable = React.createClass({
 });
 
 var Navigation = React.createClass({
-    getInitialState: function() {
-        return {
-            apps: [],
-            active: {}
-        };
-    },
-    componentWillMount: function() {
-
-    },
     render: function(){
         return (
             <header id="side-nav">
@@ -183,27 +166,8 @@ var App = React.createClass({
             }.bind(this)
         });
     },
-    // getDefaultApp: function() {
-    //     $.ajax({
-    //         url: "/hotkeys?app=" + this.state.apps[0],
-    //         dataType: 'json',
-    //         cache: false,
-    //         success: function(data) {
-    //             this.setState({application: data});
-    //             console.log(data);
-    //         }.bind(this),
-    //         error: function(xhr, status, err) {
-    //             console.error(this.props.url, status, err.toString());
-    //         }.bind(this)
-    //     });
-    // },
     componentWillMount: function() {
         this.getAppsList();
-        // this.getDefaultApp();
-
-    },
-    componentDidMount: function() {
-
     },
     render: function() {
         return (
@@ -211,13 +175,11 @@ var App = React.createClass({
                 <Navigation onClick={this.clickHandle} apps={this.state.apps} active={this.state.active} />
                 {
                     this.state.applications.map(function(item, key) {
-                        console.log(item.commands);
                         return(
                             <Program programName={item.name} programDescription={item.description} programCommands={item.commands} key={key} />
                         );
                     })
                 }
-
             </div>
         );
     }

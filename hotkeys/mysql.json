@@ -1,9 +1,27 @@
 {
-    "name": "MySQL",
+    "name": "Zsh",
     "description": "lorem ipsum",
-    "commands": [
-        {"name" : "hadouken", "command" : "Up + up + down + Z"},
-        {"name" : "Low Kick", "command" : "Back + O"},
-        {"name" : "Uppercut", "command" : "Down + back + Y"}
-    ]
+    "commands": [{
+        "name": "General",
+        "commands": [{
+            "keys": "tab",
+            "command": "Create a new tab in the current directory (OS X - req enabling access for assistive devices under sys prefs)."
+        }, {
+            "keys": "take",
+            "command": "Create a new directory and change to it, will create intermediate directories as required."
+        }, {
+            "keys": "x / extract",
+            "command": "Extract an archive (supported types: tar.{bz2,gz,xz,lzma}, bz2, rar, gz, tar, tbz2, tgz, zip, Z, 7z)."
+        }, {
+            "keys": "zsh_stats",
+            "command": "Get a list of the top 20 commands and how many times they have been run."
+        }, {
+            "keys": "uninstall_oh_my_zsh",
+            "command": "Uninstall Oh-my-zsh."
+        }, {
+            "keys": "upgrade_oh_my_zsh",
+            "command": "Upgrade Oh-my-zsh."
+        }]
+    }]
+
 }
