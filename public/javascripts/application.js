@@ -1,25 +1,3 @@
-/** @jsx React.DOM */
-//React Components
-var Program = React.createClass({displayName: "Program",
-    render: function(){
-        return (
-            React.createElement("div", {className: "program-container"}, 
-                React.createElement("h2", null, this.props.programName), 
-                React.createElement("p", null, this.props.programDescription), 
-
-                
-                    this.props.programCommands.map(function(item, key) {
-                        return (
-                            React.createElement(HotkeyTable, {hotkeys: item, key: key})
-                        );
-                    })
-                
-            )
-        );
-    }
-});
-
-
 var HotkeyTable = React.createClass({displayName: "HotkeyTable",
     render: function() {
         return (
@@ -96,6 +74,29 @@ var Navigation = React.createClass({displayName: "Navigation",
         );
     }
 });
+
+var Program = React.createClass({displayName: "Program",
+    render: function(){
+        return (
+            React.createElement("div", {className: "program-container"}, 
+                React.createElement("h2", null, this.props.programName), 
+                React.createElement("p", null, this.props.programDescription), 
+
+                
+                    this.props.programCommands.map(function(item, key) {
+                        return (
+                            React.createElement(HotkeyTable, {hotkeys: item, key: key})
+                        );
+                    })
+                
+            )
+        );
+    }
+});
+
+/** @jsx React.DOM */
+//React Components
+
 
 var App = React.createClass({displayName: "App",
     getInitialState: function() {
