@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 var Navigation = React.createClass({
     render: function(){
         return (
@@ -41,3 +43,5 @@ var Navigation = React.createClass({
         );
     }
 });
+
+module.exports = Navigation;

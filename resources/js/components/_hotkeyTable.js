@@ -1,3 +1,6 @@
+/** @jsx React.DOM */
+
+
 var HotkeyTable = React.createClass({
     render: function() {
         return (
@@ -30,3 +33,5 @@ var HotkeyTable = React.createClass({
     }
 
 });
+
+module.exports = HotkeyTable;

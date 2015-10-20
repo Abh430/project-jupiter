@@ -1,3 +1,7 @@
+/** @jsx React.DOM */
+
+var Hotkeytable = require('./_hotkeyTable.js');
+
 var Program = React.createClass({
     render: function(){
         return (
@@ -16,3 +20,5 @@ var Program = React.createClass({
         );
     }
 });
+
+module.exports = Program;
